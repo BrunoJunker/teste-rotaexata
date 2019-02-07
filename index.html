@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rota Exata -> Avaliação de conhecimento</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .row.content {height: 1500px}
+    
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+  
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Bruno Henrique de Mello Junker</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Primeiro desafio</a></li>
+        <li></li>
+      </ul><br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+     
+      <hr>
+      <h2>Proposta de resposta para o primeiro desafio</h2>
+      <h5><span class="glyphicon glyphicon-time"></span> Criar um formulário com pelo menos um campo de cada tipo: texto, senha, área de texto,
+        select, checkbox, radio, botões (submit e reset).</h5>
+      <form onsubmit="validaTudo()">
+        <div id="mensagemDeErro" class="alert alert-danger" style="display: none" role="alert"></div>
+        <div id="mensagemDeSucesso" class="alert alert-success" style="display: none" role="alert"></div>
+
+        <div class="form-group">
+          <label for="usr">Usuário:</label>
+          <input type="text" class="form-control" id="usr">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Senha:</label>
+          <input type="password" class="form-control" id="pwd">
+        </div>
+        <div class="form-group">
+          <label for="comment">Reporte o problema no sistema:</label>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="comment">Indique quando o problema aconteceu:</label>
+          <div class="radio">
+            <label><input type="radio" name="localProblema" value="Na saída" checked>Na saída</label><br>
+            <label><input type="radio" name="localProblema" value="No caminho">No caminho</label><br>
+            <label><input type="radio" name="localProblema" value="Na chegada">Na chegada</label><br>
+          </div>
+  
+        </div>
+        <div class="form-group">
+          <label for="comment">Problema pode ficar público?</label>
+          <div class="radio">
+            <label><input type="radio" name="problemaPublico" value="Sim" checked>Sim</label><br>
+            <label><input type="radio" name="problemaPublico" value="Não">Não</label>
+          </div>
+          <button type="submit" class="btn btn-primary" >Enviar</button>
+          <button type="button" class="btn btn-warning">Cancelar</button>
+        </div>
+      </form>
+</body>
+<script>
+  function validaTudo() {
+    var retorno = true;
+    var txt = "";
+    
+    if (document.getElementById("usr").value.length == 0) {
+      txt += "<p>Preencha o campo nome do usuário</p>";
+      retorno = false;
+    } else {
+      txt += "<p>Usuário: " + document.getElementById("usr").value + "</p>"
+    }
+    if (document.getElementById("pwd").value.length == 0) {
+      txt += "<p>Preencha o campo senha do usuário </p>";
+      retorno = false;
+    } else {
+      txt += "<p>Senha: " + document.getElementById("pwd").value + "</p>"
+    }
+    if (document.getElementById("comment").value.length == 0) {
+      txt += "<p>Preencha o campo reporte o problema</p>";
+      retorno = false;
+    } else {
+      txt += "<p>Problema: " + document.getElementById("comment").value + "</p>"
+    }
+
+    var localProblema = document.getElementsByName("localProblema")
+    var localProblemaValid = false
+    var i = 0
+    while (!localProblemaValid && i < localProblema.length) {
+      if (localProblema[i].checked) {
+        localProblemaValid = true
+      }
+      i++
+    }
+    if (!localProblemaValid) {
+      txt += "<p>Preencha o campo indique um problema</p>";
+      retorno = false;
+    }
+
+    var problemaPublico = document.getElementsByName("problemaPublico")
+    var problemaPublicoValid = false
+    var i = 0
+    while (!problemaPublicoValid && i < problemaPublico.length) {
+      if (problemaPublico[i].checked) {
+        problemaPublicoValid = true
+      }
+      i++
+    }
+    if (!problemaPublicoValid) {
+      txt += "<p>Preencha o campo indique um problema</p>";
+      retorno = false;
+    }
+    
+    if (retorno) {
+      txt += "<p>Formulário foi totalmente preenchido. <b>Parabéns!<b>";
+      document.getElementById("mensagemDeSucesso").innerHTML = txt;
+      document.getElementById("mensagemDeSucesso").style.display = "block";
+      document.getElementById("mensagemDeErro").style.display = "none";
+    } else {
+      document.getElementById("mensagemDeErro").innerHTML = txt;
+      document.getElementById("mensagemDeErro").style.display = "block";
+      document.getElementById("mensagemDeSucesso").style.display = "none";
+    }
+  }
+</script>
+</html>
