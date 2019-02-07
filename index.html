@@ -93,6 +93,7 @@
         </div>
       </form>
 </body>
+<script src="js/md5.min.js"></script>
 <script>
   function validaTudo() {
     var retorno = true;
@@ -150,11 +151,18 @@
       document.getElementById("mensagemDeSucesso").innerHTML = txt;
       document.getElementById("mensagemDeSucesso").style.display = "block";
       document.getElementById("mensagemDeErro").style.display = "none";
+
+      criptografarSenha()
     } else {
       document.getElementById("mensagemDeErro").innerHTML = txt;
       document.getElementById("mensagemDeErro").style.display = "block";
       document.getElementById("mensagemDeSucesso").style.display = "none";
     }
+  }
+
+  function criptografarSenha() {
+    var hash = md5(document.getElementById("pwd").value)
+    console.log(hash)
   }
 </script>
 </html>
