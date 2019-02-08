@@ -9,27 +9,27 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
     .row.content {height: 1500px}
-    
+
     .sidenav {
       background-color: #f1f1f1;
       height: 100%;
     }
-    
+
     footer {
       background-color: #555;
       color: white;
       padding: 15px;
     }
-    
+
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-      .row.content {height: auto;} 
+      .row.content {height: auto;}
     }
   </style>
-  
+
 </head>
 <body>
 
@@ -39,54 +39,61 @@
       <h4>Bruno Henrique de Mello Junker</h4>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#section1">Primeiro desafio</a></li>
-        <li></li>
-      </ul><br>    
+      </ul>
     </div>
 
     <div class="col-sm-9">
-     
-      <hr>
       <h2>Proposta de resposta para o primeiro desafio</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> Criar um formulário com pelo menos um campo de cada tipo: texto, senha, área de texto,
-        select, checkbox, radio, botões (submit e reset).</h5>
-      
-        <div class="form-group">
-          <label for="usr">Usuário:</label>
-          <input type="text" class="form-control" id="usr">
+      <h5>
+        <span class="glyphicon glyphicon-time"></span>
+        Criar um formulário com pelo menos um campo de cada tipo: texto, senha, área de texto,
+        select, checkbox, radio, botões (submit e reset).
+      </h5>
+
+      <div class="form-group">
+        <label for="usr">Usuário:</label>
+        <input type="text" class="form-control" id="usr">
+      </div>
+
+      <div class="form-group">
+        <label for="pwd">Senha:</label>
+        <input type="password" class="form-control" id="pwd">
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Reporte o problema no sistema:</label>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Indique quando o problema aconteceu:</label>
+        <div class="radio">
+          <label><input type="radio" name="localProblema" value="Na saída" checked>Na saída</label><br>
+          <label><input type="radio" name="localProblema" value="No caminho">No caminho</label><br>
+          <label><input type="radio" name="localProblema" value="Na chegada">Na chegada</label><br>
         </div>
-        <div class="form-group">
-          <label for="pwd">Senha:</label>
-          <input type="password" class="form-control" id="pwd">
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Problema pode ficar público?</label>
+        <div class="radio">
+          <label><input type="radio" name="problemaPublico" value="Sim" checked>Sim</label><br>
+          <label><input type="radio" name="problemaPublico" value="Não">Não</label>
         </div>
-        <div class="form-group">
-          <label for="comment">Reporte o problema no sistema:</label>
-          <textarea class="form-control" rows="5" id="comment"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="comment">Indique quando o problema aconteceu:</label>
-          <div class="radio">
-            <label><input type="radio" name="localProblema" value="Na saída" checked>Na saída</label><br>
-            <label><input type="radio" name="localProblema" value="No caminho">No caminho</label><br>
-            <label><input type="radio" name="localProblema" value="Na chegada">Na chegada</label><br>
-          </div>
-  
-        </div>
-        <div class="form-group">
-          <label for="comment">Problema pode ficar público?</label>
-          <div class="radio">
-            <label><input type="radio" name="problemaPublico" value="Sim" checked>Sim</label><br>
-            <label><input type="radio" name="problemaPublico" value="Não">Não</label>
-          </div>
-          <button onclick="validaTudo()" class="btn btn-primary" >Enviar</button>
-          <button type="button" class="btn btn-warning">Cancelar</button>
-        </div>      
+        <button onclick="validaTudo()" class="btn btn-primary" >Enviar</button>
+        <button type="button" class="btn btn-warning">Cancelar</button>
+      </div>
+    </div>
+  </div>
 </body>
+
 <script src="js/md5.min.js"></script>
+<script type="text/javascript" src="autenticacao.js"></script>
 <script>
   function validaTudo() {
     var retorno = true;
     var txt = "";
-    
+
     if (document.getElementById("usr").value.length == 0) {
       txt += "Preencha o campo nome do usuário\n";
       retorno = false;
@@ -133,9 +140,8 @@
       txt += "Preencha o campo indique um problema\n";
       retorno = false;
     }
-    
-   var senhaCript = criptografarSenha(document.getElementById("pwd").value)
-    var autenticacao = require('./autenticacao.json')
+
+    var senhaCript = criptografarSenha(document.getElementById("pwd").value)
 
     if (document.getElementById("usr").value != autenticacao.nome) {
       txt += "Usuário não coincide com a de autenticação (Bruno Henrique De Mello Junker)\n";
