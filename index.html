@@ -146,18 +146,10 @@
       retorno = false;
     }
     
-    if (retorno) {
+   if (retorno) {
       txt += "<p>Formulário foi totalmente preenchido. <b>Parabéns!<b>";
-      document.getElementById("mensagemDeSucesso").innerHTML = txt;
-      document.getElementById("mensagemDeSucesso").style.display = "block";
-      document.getElementById("mensagemDeErro").style.display = "none";
-
-      criptografarSenha()
-    } else {
-      document.getElementById("mensagemDeErro").innerHTML = txt;
-      document.getElementById("mensagemDeErro").style.display = "block";
-      document.getElementById("mensagemDeSucesso").style.display = "none";
     }
+      alert(txt)
   }
 
   function criptografarSenha() {
