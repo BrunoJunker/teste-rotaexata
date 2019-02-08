@@ -100,22 +100,22 @@
     var txt = "";
     
     if (document.getElementById("usr").value.length == 0) {
-      txt += "<p>Preencha o campo nome do usuário</p>";
+      txt += "Preencha o campo nome do usuário/n";
       retorno = false;
     } else {
-      txt += "<p>Usuário: " + document.getElementById("usr").value + "</p>"
+      txt += "Usuário: " + document.getElementById("usr").value + "/n"
     }
     if (document.getElementById("pwd").value.length == 0) {
-      txt += "<p>Preencha o campo senha do usuário </p>";
+      txt += "Preencha o campo senha do usuário /n";
       retorno = false;
     } else {
-      txt += "<p>Senha: " + document.getElementById("pwd").value + "</p>"
+      txt += "Senha: " + document.getElementById("pwd").value + "/n"
     }
     if (document.getElementById("comment").value.length == 0) {
-      txt += "<p>Preencha o campo reporte o problema</p>";
+      txt += "Preencha o campo reporte o problema/n";
       retorno = false;
     } else {
-      txt += "<p>Problema: " + document.getElementById("comment").value + "</p>"
+      txt += "Problema: " + document.getElementById("comment").value + "/n"
     }
 
     var localProblema = document.getElementsByName("localProblema")
@@ -128,7 +128,7 @@
       i++
     }
     if (!localProblemaValid) {
-      txt += "<p>Preencha o campo indique um problema</p>";
+      txt += "Preencha o campo indique um problema/n";
       retorno = false;
     }
 
@@ -142,12 +142,12 @@
       i++
     }
     if (!problemaPublicoValid) {
-      txt += "<p>Preencha o campo indique um problema</p>";
+      txt += "Preencha o campo indique um problema/n";
       retorno = false;
     }
     
    if (retorno) {
-      txt += "<p>Formulário foi totalmente preenchido. <b>Parabéns!<b>";
+      txt += "Formulário foi totalmente preenchido. <b>Parabéns!<b>";
     }
       alert(txt)
   }
