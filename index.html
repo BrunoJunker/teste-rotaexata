@@ -153,11 +153,14 @@
    if (retorno) {
       txt += "Formulário foi totalmente preenchido. Parabéns!";
     }
-      alert(txt)
+      chamaAlert(txt)
   }
 
   function criptografarSenha(senha) {
     return md5(senha)
+  }
+  function chamaAlert(mensagem) {
+    alert(mensagem)
   }
 </script>
 </html>
