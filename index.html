@@ -146,15 +146,26 @@
       retorno = false;
     }
     
+   var senhaCript = criptografarSenha(document.getElementById("pwd").value)
+    var autenticacao = require('./autenticacao.json')
+
+    if (document.getElementById("usr").value != autenticacao.nome) {
+      txt += "Usuário não coincide com a de autenticação (Bruno Henrique De Mello Junker)\n";
+      retorno = false;
+    }
+    if (senhaCript != autenticacao.senha) {
+      txt += "Senha não coincide com a de autenticação (1234)\n";
+      retorno = false;
+    }
+
    if (retorno) {
       txt += "Formulário foi totalmente preenchido. Parabéns!";
     }
       alert(txt)
   }
 
-function criptografarSenha() {
-    var hash = md5(document.getElementById("pwd").value)
-      return hash
+  function criptografarSenha(senha) {
+    return md5(senha)
   }
 </script>
 </html>
